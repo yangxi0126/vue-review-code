@@ -1,8 +1,14 @@
 <template>
-  <transition name="fade">
-    <div class="notification" :style="style">
-      <span class="content">{{content}}</span>
-      <a class="btn" @click="handleClose">{{text}}</a>
+  <!--notify设计要点：notify不同于loading，它应该是多个的-->
+  <!--@after-leave触发的afterLeave来控制动画完成后才删除节点，而不是突然消失-->
+  <transition name="fade" @after-leave="afterLeave">
+    <div class="notification"
+         :style="style"
+         v-show="isShow"
+         @mouseover="clearTimer"
+         @mouseout="createTimer">
+      <div class="content" v-html="content"></div>
+      <a class="btn" @click="handleClose" v-html="btnText"></a>
     </div>
   </transition>
 </template>
@@ -15,14 +21,17 @@
         type: String,
         require: true
       },
-      text: {
+      btnText: {
         type: String,
         default: '关闭'
+      },
+      timer: {
+        default: null
       }
     },
     data() {
       return {
-        isShow: false,
+        isShow: true,
         verticalOffset: 0
       }
     },
@@ -33,12 +42,35 @@
           zIndex: 999,
           right: '20px',
           bottom: `${this.verticalOffset}px`
-        }
+        };
       }
     },
+    mounted() {
+      this.createTimer();
+    },
+    beforeDestroy() {
+      this.clearTimer();
+    },
     methods: {
+      createTimer() {
+        let that = this;
+        if (that.autoClose) {
+          that.timer = setTimeout(() => {
+            that.$emit('close');
+          }, that.autoClose);
+        }
+      },
+      clearTimer() {
+        let that = this;
+        if (that.timer) {
+          clearTimeout(that.timer);
+        }
+      },
       handleClose(event) {
         event.preventDefault();
+        this.$emit('close');  //emit这一层实际上是emit到Notification.js里面
+      },
+      afterLeave() {
         this.$emit('close');
       }
     }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="notify">notify</button>
+    <button @click="notify">Notify</button>
   </div>
 </template>
 
@@ -9,21 +9,24 @@
     data() {
       return {}
     },
-    mounted() {
-
-    },
     methods: {
       notify() {
         this.$notify.show({
-          text: 'close',
-          autoClose: true,
-          closeTime: 2000
+          btnText: '<div class="close">close</div>',
+          content: '<div><i class="icon">X</i>测试测试测试测试测试测试</div>',
+          autoClose: 3000
         });
       }
     }
   }
 </script>
+<style lang="less">
+  .close {
+    color: #fff;
+  }
 
-<style scoped>
-
+  .icon {
+    font-weight: bold;
+    padding-right: 10px;
+  }
 </style>
