@@ -1,32 +1,27 @@
 <template>
   <div>
-    <button @click="notify">Notify</button>
+    <button @click="notice('top-left')">左上</button>
+    <button @click="notice('bottom-left')">左下</button>
+    <button @click="notice('top-right')">右上</button>
+    <button @click="notice('bottom-right')">右下</button>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
     data() {
-      return {}
+      return {
+        positionArr: ['bottom-left', 'top-right', 'bottom-right', 'top-left']
+      }
     },
     methods: {
-      notify() {
-        this.$notify.show({
-          btnText: '<div class="close">close</div>',
-          content: '<div><i class="icon">X</i>测试测试测试测试测试测试</div>',
-          autoClose: 3000
+      notice(type) {
+        let that = this;
+        that.$notice({
+          position: type,
+          duration: 3000
         });
       }
     }
   }
 </script>
-<style lang="less">
-  .close {
-    color: #fff;
-  }
-
-  .icon {
-    font-weight: bold;
-    padding-right: 10px;
-  }
-</style>

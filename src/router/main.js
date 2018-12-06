@@ -16,10 +16,6 @@ import VuexsRouter from './vuexs'
 
 Vue.use(Router);
 
-import Notification from '../components/notification/Notification.js'
-
-Vue.use(Notification);
-
 // import Loading from '../components/loading/loading.js';
 //
 // Vue.use(Loading);
