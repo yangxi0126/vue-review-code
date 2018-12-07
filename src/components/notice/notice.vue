@@ -5,9 +5,10 @@
          v-if="visible"
          :style="positionStyle"
          @mouseover="clearTimer"
-         @mouseout="createTimer">
-      <div class="content">123123123</div>
-      <a class="btn" @click="close">close</a>
+         @mouseout="createTimer"
+         @click="click">
+      <div class="content" v-html="message"></div>
+      <a class="btn" @click.stop="close" v-if="showClose">X</a>
     </div>
   </transition>
 </template>
@@ -17,9 +18,12 @@
     data() {
       return {
         visible: false,
+        message: '',
         timer: null,
+        showClose: true,
         duration: 3000,
         onClose: null,
+        onClick: null,
         position: 'bottom-right'
       }
     },
@@ -38,22 +42,27 @@
       }
     },
     mounted() {
-      if (this.duration > 0) {
-        this.createTimer();
-      }
+      this.createTimer();
     },
     beforeDestroy() {
       this.clearTimer();
     },
     methods: {
       createTimer() {
-        this.timer = setTimeout(() => {
-          this.close();
-        }, this.duration);
+        if (this.duration > 0) {
+          this.timer = setTimeout(() => {
+            this.close();
+          }, this.duration);
+        }
       },
       clearTimer() {
         if (this.timer) {
           clearTimeout(this.timer);
+        }
+      },
+      click() {
+        if (typeof this.onClick === 'function') {
+          this.onClick(this);
         }
       },
       close() {
