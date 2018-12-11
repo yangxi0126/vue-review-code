@@ -13,6 +13,7 @@ import VModel from './vModel.js'
 import VRouter from './vRouter'
 import VuexRouter from './vuex'
 import VuexsRouter from './vuexs'
+import CommentTest from './commentTest'
 
 Vue.use(Router);
 
@@ -35,7 +36,8 @@ const router = new Router({
     ...VModel,
     ...VRouter,
     ...VuexRouter,
-    ...VuexsRouter
+    ...VuexsRouter,
+    ...CommentTest
   ]
 });
 

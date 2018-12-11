@@ -15,6 +15,7 @@
 
 <script type="text/ecmascript-6">
   export default {
+    name: 'notice',
     data() {
       return {
         visible: false,
