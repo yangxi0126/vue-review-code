@@ -19,7 +19,7 @@
     },
     data() {
       return {
-        list: {}
+        list: []
       }
     },
     methods: {

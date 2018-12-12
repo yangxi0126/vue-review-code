@@ -21,14 +21,14 @@
     components: {
       List
     },
-    provide() {
+    provide() {  //provide传函数
       return {
         commentEvt: this.comment
       }
     },
     props: {
       list: {
-        type: [Object, Array],
+        type: Array,
         default: []
       }
     },
