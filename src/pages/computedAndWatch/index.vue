@@ -45,10 +45,10 @@
 //      }
     },
     watch: {
-//      watchData() {  //这样写在初始化的时候并不会执行。
-//        console.log('watch');
-//        this.watchAllData = this.watchData + '=';
-//      }
+     // watchData() {  //这样写在初始化的时候并不会执行。
+     //   console.log('watch');
+     //   this.watchAllData = this.watchData + '=';
+     // }
       watchData: {
         handler() {
           console.log('watch');

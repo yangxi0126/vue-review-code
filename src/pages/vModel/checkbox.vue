@@ -23,7 +23,7 @@
     },
     methods: {
       changeEvt(event) {
-        this.$emit('radioEvt', event.target.checked);
+        this.$emit('checkEvt', event.target.checked);
       }
     }
   }

@@ -1,22 +1,32 @@
 <template>
   <div>
-    <input type="radio" :checked="checked" @change="changeEvt"/>
+    <input v-for="item in values"
+           type="radio"
+           :checked="item === value"
+           :value="item"
+           @change="changeEvt"
+           name="name"/>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
     props: {
-      checked: {
-        type: Boolean,
-        default: false
-      },
       value: {
+        default: ''
+      },
+      values: {
+        default() {
+          return [];
+        }
+      },
+      name: {
+        type: String,
         default: ''
       }
     },
     created() {
-      console.log(`radio checked is ${this.checked}`);
+      console.log(`radio checked is ${this.checked}, value is ${this.value}`);
     },
     data() {
       return {}

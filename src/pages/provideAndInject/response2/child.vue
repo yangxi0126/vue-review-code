@@ -15,13 +15,11 @@
     },
     inject: ['childVal','childObj'],
     mounted() {
-      debugger
       this.number = this.childVal;
 //      this.obj = this.parentObj.childObj;
     },
     watch: {
       childVal(val) {
-        debugger
         this.number = val;
       }
     },

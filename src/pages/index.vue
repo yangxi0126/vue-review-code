@@ -1,16 +1,29 @@
 <template>
   <div>
-    <button @click="notice('top-left')">左上</button>
-    <button @click="notice('bottom-left')">左下</button>
-    <button @click="notice('top-right')">右上</button>
-    <button @click="notice('bottom-right')">右下</button>
-    <button @click="close">close(只能关闭最后一条)</button>
-    <button @click="closeAll">closeAll</button>
+    <div class="container">
+      <button @click="notice('top-left')">左上</button>
+      <button @click="notice('bottom-left')">左下</button>
+      <button @click="notice('top-right')">右上</button>
+      <button @click="notice('bottom-right')">右下</button>
+      <button @click="close">close(只能关闭最后一条)</button>
+      <button @click="closeAll">closeAll</button>
+    </div>
+    <div class="container">
+      <button>show loading</button>
+      <button>show area loading</button>
+      <div class="area"></div>
+      <Loading></Loading>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import Loading from '../components/loading/loading.vue';
+
   export default {
+    components: {
+      Loading
+    },
     data() {
       return {
         noticeObj: null,
@@ -23,7 +36,7 @@
         that.noticeObj = that.$notice({
           message: `<div class="test">test</div>`,
           position: type,
-          duration: 0,
+          duration: 3000,
           onClose(notice) {
             console.log(notice);
           },
@@ -42,9 +55,17 @@
   }
 </script>
 <style lang="less">
+  .container {
+    margin-top: 20px;
+  }
+
   .test {
-    color: red;;
+    color: red;
     font-size: 20px;
     font-weight: bold;
+  }
+
+  .area {
+
   }
 </style>

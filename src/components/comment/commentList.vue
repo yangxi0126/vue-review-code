@@ -44,10 +44,10 @@
 //        allLists: []
       }
     },
-    //父组件改变props，子组件如果直接使用props，会触发子组件更新
-    //父组件改变props，子组件如果将props放进data中再使用，不会触发子组件更新
-    //父组件改变props，子组件如果将props放进computed中再使用，会触发子组件更新(watch也能达到同样的效果，参考被注释的代码)
-    //data，props和computed的变化都会触发组件更新
+    // 父组件改变props, 子组件如果直接使用props, 会触发子组件更新
+    // 父组件改变props, 子组件如果将props放进data中再使用, 不会触发子组件更新
+    // 父组件改变props, 子组件如果将props放进computed中再使用, 会触发子组件更新(watch也能达到同样的效果, 参考被注释的代码)
+    // data, props和computed的变化都会触发组件更新
     computed: {
       allLists() {
         let listArr = [];

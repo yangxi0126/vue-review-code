@@ -1,22 +1,24 @@
 <template>
   <div>
     <div>this is page1</div>
+    <div>this is page1 {{value}}</div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default {  //这三个before是拿不到this的，所以不能通过this赋值
-    beforeRouteEnter(to, form, next) {
+    beforeRouteEnter(to, from, next) {
       console.log('beforeRouteEnter');
       next(vm => {
         console.log(`this.name is ${vm.name}`);  //只能通过回调来赋值
+        vm.value = Math.random();
       });
     },
     beforeRouteUpdate(to, from, next) {  //可以不用写watch监视路由，减少性能开销
       console.log(to.query, 'beforeRouteUpdate');
       next();
     },
-    beforeRouteLeave(to, form, next) {  //但是好像并不能阻止浏览器前进后退按钮，虽然可以阻止跳转，但是路由已经发生了改变
+    beforeRouteLeave(to, from, next) {  //但是好像并不能阻止浏览器前进后退按钮，虽然可以阻止跳转，但是路由已经发生了改变
       console.log('beforeRouteLeave');
       if (confirm('确认离开?')) {
         next();
@@ -27,7 +29,8 @@
     },
     data() {
       return {
-        name: 'page1 test'
+        name: 'page1 test',
+        value: ''
       }
     },
     methods: {}

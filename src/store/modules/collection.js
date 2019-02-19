@@ -33,7 +33,8 @@ const actions = {
   commitPushCollects(context, item) {  //触发mutations里面的pushCollects ,传入数据形参item 对应到items
     context.commit('pushCollects', item);
     context.commit('globalFun', item, {root: true});  //调用root的方法 root: true
-    context.commit('footerStatus/newNum', 1, {root: true});  //调用footerStatus模块的方法 root: true
+    context.commit('footerStatus/newNum', 1, {root: true});  //调用footerStatus模块的方法 root: true。 必须写了root: true才能调用其他模块的方法。
+    // context.dispatch('footerStatus/getNewNum', 1, {root: true});  //同上
   },
   commitReduceCollects(context, item) {
     context.commit('reduceCollect', item);

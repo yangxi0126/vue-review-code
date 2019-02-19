@@ -1,7 +1,8 @@
 <template>
   <div>
+    <div>this is parent</div>
     <SlotTest>
-      <div>this is parent</div>
+      <div>this is slot range</div>
       <div slot="test">parent has slot222</div>
     </SlotTest>
   </div>

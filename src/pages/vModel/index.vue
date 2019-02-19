@@ -20,7 +20,7 @@
     <div>
       <span>radio</span>
       <div>
-        <vRadio v-model="foo" @radioEvt="radioEvt" :checked="true"></vRadio>
+        <vRadio v-model="foo" @radioEvt="radioEvt" :values="radioArr" :name="'test'"></vRadio>
       </div>
     </div>
   </div>
@@ -40,7 +40,8 @@
     data() {
       return {
         inputValue: 123,
-        foo: 555
+        foo: 555,
+        radioArr: [666, 555]
       }
     },
     methods: {
@@ -51,7 +52,7 @@
         console.log(event);
       },
       radioEvt(event) {
-        console.log(event);
+        console.log(event, this.foo);
       }
     }
   }

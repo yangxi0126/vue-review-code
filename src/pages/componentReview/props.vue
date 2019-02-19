@@ -2,7 +2,7 @@
   <div>
     <div>props</div>
     <div>
-      <!--要用input时间，否则会显示旧值-->
+      <!--要用input事件，否则会显示旧值-->
       <input type="text" v-model="text" @input="handleChange"/>
       <span>{{propOne}}</span>
       <span>{{obj.name}}</span>

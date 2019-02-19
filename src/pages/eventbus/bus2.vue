@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>this is bus2</span>
+    <span>this is bus2 {{number}}</span>
     <button @click="say">bus2</button>
   </div>
 </template>
@@ -8,7 +8,9 @@
 <script type="text/ecmascript-6">
   export default {
     data() {
-      return {}
+      return {
+        number: Math.random()
+      }
     },
     mounted() {
       if (this.$root.eventBus) {
@@ -23,7 +25,10 @@
     methods: {
       say() {
         if (this.$root.eventBus) {
-          this.$root.eventBus.$emit('eventBus', {type: 'bus2'});
+          this.$root.eventBus.$emit('eventBus', {
+            type: 'bus2',
+            number: this.number
+          });
           this.$router.push('/bus1');
         }
       }

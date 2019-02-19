@@ -1,0 +1,58 @@
+﻿1.vue自带的component组件 :is是传不同组件名 可以单独传值进去 也可以在组件里面抛值出来
+
+2.eventBus可以绑定到window或者main.js的那个vue实例上面。
+(1).当前页面通过this.$root.eventBus.$emit(事件名,值);来派发事件
+(2).在其他页面的mounted里面通过$on绑定派发的事件, this.$root.eventBus.$on(事件名, (值)=>{获取值}); 
+(3).在destroyed里面通过this.$root.eventBus.$off(事件名);来销毁
+其实就相当于window对象上面绑定一个公共事件。
+
+3.slot
+父组件引入子组件
+<SlotDemo>
+这里可以传可以不传。不传则是默认的子组件里面的dom, 传了则会全部替换为传入的dom结构。
+<div>123123</div>
+<div slot="test">test</div> 如果slot给了name, 则会自动把对应的<slot name="test">default</slot>替换掉
+<SlotDemo>
+
+4.在一般的情况下, provide和inject对非对象的绑定是不可响应的。也就是说, 一般用于父级向后代自己跨级传值, 同时传过去的值只做展示不做计算的那种需求。可以通过Object.defineProperty来实现响应式, 但是个人觉得没必要用这么复杂的方式, 因为一般超过三层的层级在个人看来都是可以优化的。
+
+5.compued: computed里面最好不要去修改旧值(可能会导致无限循环)，而是应该生成一个新值
+watch: 
+watchData() {  //这样写在初始化的时候并不会执行。
+       
+}
+
+watchData: {
+  handler() {     
+ 
+  },
+  immediate: true  //这样写在初始化的时候会执行一次。
+}
+
+6.beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave这三个before是拿不到this的，所以不能通过this赋值, 只能通过在to, from, next中的next(vm){vm就相当于this}来进行操作。
+
+7.关于vuex:
+个人的理解及做法:
+(1).state里面是存放变量的, 如{flag: true}
+(2).getters里面是返回变量便于外部调用的, 如
+getters={
+  getFlag(state) {return state.flag;}		
+}
+(3).mutations里面是存放处理变量的方法的, 但是一般不在外面直接调用, 而是在actions里面通过commit来调用
+mutations = {
+  myFun(state){...方法}
+}
+(4).actions可以调用mutations里面的方法
+actions = {
+  doMyFun(context, 参数){context.commit(myFun, 参数);}
+}
+map其实就相当于一个函数映射, 键值对的键表示当前页的函数别名, 值代表vuex里面的函数名, 这样就可以在当前页通过this.别名 调用到vuex里面的函数了。
+另外, 在外部其实也可以通过this.$store.getters.getFlag来直接获取值, 也可以通过this.$store.dispatch(doMyFun, 参数);或者 this.$store.commit(newNum, 参数);来直接调用vuex里面的方法。
+切记dispatch对应actions, commit对应mutations。
+
+8.
+父组件改变props，子组件如果直接使用props，会触发子组件更新
+父组件改变props，子组件如果将props放进data中再使用，不会触发子组件更新
+父组件改变props，子组件如果将props放进computed中再使用，会触发子组件更新(watch也能达到同样的效果，参考被注释的代码)
+data，props和computed的变化都会触发组件更新
+
