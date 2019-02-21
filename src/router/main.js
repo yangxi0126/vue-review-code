@@ -14,6 +14,8 @@ import VRouter from './vRouter'
 import VuexRouter from './vuex'
 import VuexsRouter from './vuexs'
 import CommentTest from './commentTest'
+import Extends from './extends'
+import Mixin from './mixin'
 
 Vue.use(Router);
 
@@ -37,7 +39,9 @@ const router = new Router({
     ...VRouter,
     ...VuexRouter,
     ...VuexsRouter,
-    ...CommentTest
+    ...CommentTest,
+    ...Extends,
+    ...Mixin
   ]
 });
 
