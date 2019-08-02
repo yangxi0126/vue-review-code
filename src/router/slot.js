@@ -3,7 +3,13 @@ const Index = () => {
 };
 
 const routes = [
-  {path: '/slot', component: Index}
+  {
+    path: '/slot',
+    component: Index,
+    meta: {
+      requireAuth: true
+    }
+  }
 ];
 
 export default routes;

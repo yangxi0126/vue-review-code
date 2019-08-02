@@ -16,6 +16,7 @@ import VuexsRouter from './vuexs'
 import CommentTest from './commentTest'
 import Extends from './extends'
 import Mixin from './mixin'
+import RequireAuth from './requireAuth'
 
 Vue.use(Router);
 
@@ -25,7 +26,7 @@ Vue.use(Router);
 
 const router = new Router({
   routes: [
-    {path: '/', redirect: '/index'},
+    {path: '*', redirect: '/requireAuth'},
     ...Index,
     ...Components,
     ...EventBus,
@@ -41,20 +42,21 @@ const router = new Router({
     ...VuexsRouter,
     ...CommentTest,
     ...Extends,
-    ...Mixin
+    ...Mixin,
+    ...RequireAuth
   ]
 });
 
-// router.beforeEach((to, from, next) => {  //可以在这里做权限登录的控制
-//   if (!to.meta.requireLogin) {  //meta.requireLogin需要在每个需要验证登录的页面路由里面去写上
-//     next();
-//   } else {
-//     if (to.path === '/index') {
-//       next();
-//     } else {
-//       next('/index');
-//     }
-//   }
-// });
+router.beforeEach((to, from, next) => {  //可以在这里做权限登录的控制
+  if (!to.meta.requireAuth) {  //meta.requireAuth需要在每个需要验证登录的页面路由里面去写上
+    next();
+  } else {
+    if (sessionStorage.getItem('loginState')) {
+      next();
+    } else {
+      next('/requireAuth');
+    }
+  }
+});
 
 export default router;

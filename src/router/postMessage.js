@@ -12,11 +12,16 @@ const Child2 = () => {
 
 const routes = [
   {
-    path: '/postMessage', component: Parent, children: [
-    {path: "", redirect: "child1"},
-    {path: 'child1', component: Child1},
-    {path: 'child2', component: Child2}
-  ]
+    path: '/postMessage',
+    component: Parent,
+    meta: {
+      requireAuth: true
+    },
+    children: [
+      {path: "", redirect: "child1"},
+      {path: 'child1', component: Child1},
+      {path: 'child2', component: Child2}
+    ]
   }
 ];
 

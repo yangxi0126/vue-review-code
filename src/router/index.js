@@ -3,7 +3,14 @@ const Index = () => {
 };
 
 const routes = [
-  {name: 'index', path: '/index', component: Index}
+  {
+    name: 'index',
+    path: '/index',
+    component: Index,
+    meta: {
+      requireAuth: true
+    }
+  }
 ];
 
 export default routes;

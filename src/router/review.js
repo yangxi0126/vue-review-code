@@ -14,6 +14,9 @@ const routes = [
   {
     path: '/review',
     component: Index,
+    meta: {
+      requireAuth: true
+    },
     children: [
       {
         path: '',

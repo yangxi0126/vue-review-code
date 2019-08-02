@@ -11,9 +11,27 @@ const DefineIndex2 = () => {
 };
 
 const routes = [
-  {path: '/provideAndInject', component: Index},
-  {path: '/responsePaI', component: DefineIndex},
-  {path: '/responsePaI2', component: DefineIndex2}
+  {
+    path: '/provideAndInject',
+    component: Index,
+    meta: {
+      requireAuth: true
+    }
+  },
+  {
+    path: '/responsePaI',
+    component: DefineIndex,
+    meta: {
+      requireAuth: true
+    }
+  },
+  {
+    path: '/responsePaI2',
+    component: DefineIndex2,
+    meta: {
+      requireAuth: true
+    }
+  }
 ];
 
 export default routes;

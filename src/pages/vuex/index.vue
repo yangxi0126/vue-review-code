@@ -43,7 +43,9 @@
         // console.log(isShow);
 //        let isShow = this.$store.getters.isShow;
 //         this.getNum(2);
-       this.$store.dispatch('getNewNum', 2);  //actions用dispatch，mutations用commit。
+        this.getNum(2);
+        // this.$store.dispatch('getNewNum', 2);  //actions用dispatch，mutations用commit。
+        // this.$store.commit('newNum', 2);  //actions用dispatch，mutations用commit。
         if (isShow) {
           this.hide();
 //          this.$store.dispatch('hideFooter');

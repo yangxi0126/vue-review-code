@@ -13,6 +13,10 @@ import Notice from './components/notice/notice.js';
 
 Vue.use(Notice);
 
+import Modal from './components/modal/index.js';
+
+Vue.use(Modal);
+
 // window.eventBus = new Vue();  //eventBus既可以挂载到window上也可以挂载到vue的实例上
 
 /* eslint-disable no-new */

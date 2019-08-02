@@ -21,7 +21,7 @@
         console.log(event.data + 'child2发送给父级');
       },
       back(event) {
-        window.postMessage(JSON.stringify({callback: event.data, type: 'child2'}), '*');
+        window.postMessage(JSON.stringify({text: 'child2', type: 'child2'}), '*');
       }
     }
   }

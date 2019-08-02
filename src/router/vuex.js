@@ -5,7 +5,10 @@ const Index = () => {
 const routes = [
   {
     path: '/vuex',
-    component: Index
+    component: Index,
+    meta: {
+      requireAuth: true
+    }
   }
 ];
 

@@ -6,7 +6,10 @@ const routes = [
   {
     path: '/extends',
     name: 'extends',
-    component: Index
+    component: Index,
+    meta: {
+      requireAuth: true
+    }
   }
 ];
 

@@ -3,7 +3,13 @@ const Main = () => {
 };
 
 const routes = [
-  {path: '/components', component: Main}
+  {
+    path: '/components',
+    component: Main,
+    meta: {
+      requireAuth: true
+    }
+  }
 ];
 
 export default routes;

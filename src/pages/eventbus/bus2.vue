@@ -14,18 +14,18 @@
     },
     mounted() {
       if (this.$root.eventBus) {
-        this.$root.eventBus.$on('eventBus', (res) => {
+        this.$root.eventBus.$on('eventBus1', (res) => {
           console.log(res);
         });
       }
     },
     destroyed() {
-      this.$root.eventBus.$off('eventBus');
+      this.$root.eventBus.$off('eventBus1');
     },
     methods: {
       say() {
         if (this.$root.eventBus) {
-          this.$root.eventBus.$emit('eventBus', {
+          this.$root.eventBus.$emit('eventBus2', {
             type: 'bus2',
             number: this.number
           });

@@ -15,6 +15,9 @@ const routes = [
     path: '/vuexs',
     redirect: '/vuexs/todo',
     component: Index,
+    meta: {
+      requireAuth: true
+    },
     children: [
       {
         name: 'todo',

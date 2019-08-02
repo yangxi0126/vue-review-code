@@ -6,7 +6,10 @@ const routes = [
   {
     path: '/mixin',
     name: 'mixin',
-    component: Index
+    component: Index,
+    meta: {
+      requireAuth: true
+    }
   }
 ];
 

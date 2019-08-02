@@ -14,7 +14,9 @@ const routes = [
   {
     path: '/vrouter',
     component: Index,
-    meta: {requireLogin: true},
+    meta: {
+      requireAuth: true
+    },
     children: [
       {name: 'page1', path: 'page1', component: Page1, meta: {requireLogin: true}},
       {name: 'page2', path: 'page2', component: Page2, meta: {requireLogin: true}}

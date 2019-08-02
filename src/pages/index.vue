@@ -7,6 +7,7 @@
       <button @click="notice('bottom-right')">右下</button>
       <button @click="close">close(只能关闭最后一条)</button>
       <button @click="closeAll">closeAll</button>
+      <button @click="showModal">show modal</button>
     </div>
     <div class="container">
       <button>show loading</button>
@@ -50,6 +51,22 @@
       },
       closeAll() {
         this.$notice.closeAll();
+      },
+      showModal() {
+        let that = this;
+        that.noticeObj = that.$moveModal({
+          title: '书屋大数据',
+          slot: `<div class="test">test</div>`,
+          onClose(index) {
+            console.log(index);
+          },
+          onClick() {
+            that.showTest();
+          }
+        });
+      },
+      showTest() {
+        alert(123);
       }
     }
   }

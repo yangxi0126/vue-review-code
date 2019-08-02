@@ -3,7 +3,13 @@ const Index = () => {
 };
 
 const routes = [
-  {path: '/computedAndWatch', component: Index}
+  {
+    path: '/computedAndWatch',
+    component: Index,
+    meta: {
+      requireAuth: true
+    }
+  }
 ];
 
 export default routes;

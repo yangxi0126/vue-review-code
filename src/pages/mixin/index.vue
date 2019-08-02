@@ -9,7 +9,7 @@
   import Mixin2 from './mixin2.vue';
 
   export default {
-    mixins: [Mixin1, Mixin2],
+    mixins: [Mixin1, Mixin2],  //如果都是mounted或者created则首先走mixin1，然后走mixin2，最后才是index。
     data() {
       return {
         mixinData: '我是vue实例的data'
@@ -22,7 +22,7 @@
     },
     methods: {
       getSum: function () {
-        console.log('这是vue实例里面getSum的方法');
+        console.log('这是vue实例里面getSum的方法111');
       }
     }
   }

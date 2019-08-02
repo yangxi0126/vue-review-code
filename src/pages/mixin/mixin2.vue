@@ -7,7 +7,9 @@
 <script type="text/ecmascript-6">
   export default {
     data() {
-      return {mixinData: '我是mixinTwo的data'}
+      return {
+        mixinData: '我是mixinTwo的data'
+      }
     },
     mounted() {
       console.log('这是mixinTwo的created');
